@@ -20,7 +20,7 @@
  * @packageDocumentation
  */
 
-import { type Buch, modelName } from '../../buch/entity/index.js';
+import { type Film, modelName } from '../../film/entity/index.js';
 import { GridFSBucket, type GridFSBucketWriteStreamOptions } from 'mongodb';
 import { Injectable, type OnApplicationBootstrap } from '@nestjs/common';
 import { DbService } from '../../db/db.service.js';
@@ -39,21 +39,21 @@ import { testfiles } from './testfiles.js';
 export class DbPopulateService implements OnApplicationBootstrap {
     readonly #dbService: DbService;
 
-    readonly #buchModel: mongoose.Model<Buch>;
+    readonly #filmModel: mongoose.Model<Film>;
 
     readonly #logger = getLogger(DbPopulateService.name);
 
     readonly #testdaten = testdaten;
 
     /**
-     * Initialisierung durch DI mit `Model<Buch>` gemäß _Mongoose_.
+     * Initialisierung durch DI mit `Model<Film>` gemäß _Mongoose_.
      */
     constructor(
         dbService: DbService,
-        @InjectModel(modelName) buchModel: mongoose.Model<Buch>,
+        @InjectModel(modelName) filmModel: mongoose.Model<Film>,
     ) {
         this.#dbService = dbService;
-        this.#buchModel = buchModel;
+        this.#filmModel = filmModel;
     }
 
     /**
@@ -87,19 +87,19 @@ export class DbPopulateService implements OnApplicationBootstrap {
         }
 
         try {
-            await this.#buchModel.collection.drop();
+            await this.#filmModel.collection.drop();
         } catch {
             this.#logger.info('#populateTestdaten: Keine Collection vorhanden');
         }
 
-        const collection = await this.#buchModel.createCollection();
+        const collection = await this.#filmModel.createCollection();
         this.#logger.warn(
             '#populateTestdaten: Collection %s neu angelegt',
             collection.collectionName,
         );
 
         // https://mongoosejs.com/docs/api.html#model_Model.insertMany
-        const insertedDocs = await this.#buchModel.insertMany(this.#testdaten, {
+        const insertedDocs = await this.#filmModel.insertMany(this.#testdaten, {
             lean: true,
         });
         this.#logger.warn(

@@ -2,7 +2,7 @@
  * Das Modul besteht aus der Controller-Klasse für Lesen an der REST-Schnittstelle.
  * @packageDocumentation
  */
-import { cloud, nodeConfig } from '../../config/index.ts';
+import { cloud, nodeConfig } from '../../config/index.js';
 import RE2 from 're2';
 import { type Request } from 'express';
 

@@ -19,7 +19,7 @@ export interface GenericJsonSchema {
     /**
      * Title of the schema
      */
-    name?: string;
+    title?: string;
     /**
      * Schema description
      */

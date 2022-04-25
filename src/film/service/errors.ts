@@ -18,7 +18,7 @@ export interface ConstraintViolations {
  */
 export interface NameExists {
     readonly type: 'NameExists';
-    readonly titel: string | null | undefined;
+    readonly name: string | null | undefined;
     readonly id?: string;
 }
 
@@ -65,7 +65,7 @@ export interface FilmNotExists {
 }
 
 /**
- * Union-Type für Fehler beim Ändern eines Buches:
+ * Union-Type für Fehler beim Ändern eines Filmes:
  * - {@linkcode FilmNotExists}
  * - {@linkcode ConstraintViolations}
  * - {@linkcode NameExists}

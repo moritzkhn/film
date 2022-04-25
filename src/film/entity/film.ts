@@ -25,7 +25,7 @@ export class Film {
     readonly produzent: string | null | undefined;
 
     @Prop({ type: String, required: true, unique: true, immutable: true })
-    @ApiProperty({ example: '0000-0000-16FF-0000-Y', type: String })
+    @ApiProperty({ example: '000000000000000000000001', type: String })
     readonly isan: string | null | undefined;
 
     @Prop({ type: Number, required: true })

@@ -1,0 +1,42 @@
+# siehe app.module.ts
+
+# Funktionen, um Filme zu empfangen
+type Query {
+  filme(titel: String): [Film]
+
+  film(id: ID!): Film
+}
+
+# Funktionen, um Filme anzulegen, zu aktualisieren oder zu loeschen
+type Mutation {
+  create(
+    name: String!
+    produzent: String
+    isan: String
+    preis: Float
+    bewertung: Int
+  ): String
+
+  update(id: ID, version: Int, film: FilmUpdateInput!): Int
+
+  delete(id: ID!): Boolean
+}
+
+# Datenschema eines Filmes, das empfangen wird
+type Film {
+  id: ID
+  name: String!
+  produzent: String
+  isan: String
+  preis: Float
+  bewertung: Int
+}
+
+input FilmUpdateInput {
+  id: ID
+  name: String!
+  produzent: String
+  isan: String
+  preis: Float
+  bewertung: Int
+}

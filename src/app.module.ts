@@ -22,9 +22,9 @@ import {
 import { dbConfig, graphQlConfig } from './config/index.js';
 import { ApolloDriver } from '@nestjs/apollo';
 import { AuthModule } from './security/auth/auth.module.js';
-import { BuchModule } from './buch/buch.module.js';
 import { DbModule } from './db/db.module.js';
 import { DevModule } from './config/dev/dev.module.js';
+import { FilmModule } from './film/film.module.js';
 import { GraphQLModule } from '@nestjs/graphql';
 import { HealthModule } from './health/health.module.js';
 import { LoggerModule } from './logger/logger.module.js';
@@ -35,7 +35,7 @@ import { RequestLoggerMiddleware } from './logger/index.js';
 @Module({
     imports: [
         AuthModule,
-        BuchModule,
+        FilmModule,
         MongooseModule.forRoot(dbConfig.url),
         DbModule,
         DevModule,

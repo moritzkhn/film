@@ -23,4 +23,4 @@ export {
     type VersionInvalid,
     type VersionOutdated,
 } from './errors.js';
-export { MAX_BEWERTUNG as MAX_RATING, jsonSchema } from './jsonSchema.js';
+export { MAX_BEWERTUNG, jsonSchema } from './jsonSchema.js';

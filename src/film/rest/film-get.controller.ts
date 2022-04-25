@@ -1,5 +1,3 @@
-/* eslint-disable max-lines */
-
 /**
  * Das Modul besteht aus der Controller-Klasse für Lesen an der REST-Schnittstelle.
  * @packageDocumentation
@@ -29,10 +27,7 @@ import {
     UseGuards,
     UseInterceptors,
 } from '@nestjs/common';
-import {
-    Film,
-    type FilmDocument,
-} from '../entity/index.js';
+import { Film, type FilmDocument } from '../entity/index.js';
 import { JwtAuthGuard, RolesGuard } from '../../security/index.js';
 import { Request, Response } from 'express';
 import { ResponseTimeInterceptor, getLogger } from '../../logger/index.js';
@@ -130,7 +125,7 @@ export class FilmGetController {
      * @param res Leeres Response-Objekt von Express.
      * @returns Leeres Promise-Objekt.
      */
-    // eslint-disable-next-line max-params, max-lines-per-function
+    // eslint-disable-next-line max-params
     @Get(':id')
     @ApiOperation({ summary: 'Film mit der ID suchen' })
     @ApiParam({
@@ -166,7 +161,6 @@ export class FilmGetController {
             // vgl. Kotlin: Aufruf einer suspend-Function
             film = await this.#service.findById(id);
         } catch (err) {
-           
             this.#logger.error('findById: error=%o', err);
             return res.sendStatus(HttpStatus.INTERNAL_SERVER_ERROR);
         }
@@ -260,11 +254,10 @@ export class FilmGetController {
             name: film.name,
             bewertung: film.bewertung,
             preis: film.preis,
-            isan: film.isbn,
+            isan: film.isan,
             produzent: film.produzent,
             _links: links,
         };
         return filmDTO;
     }
 }
-/* eslint-enable max-lines */

@@ -68,9 +68,9 @@ export class FilmReadService {
     async find(filter?: mongoose.FilterQuery<FilmDocument> | undefined) {
         this.#logger.debug('find: filter=%o', filter);
 
-        // alle Buecher asynchron suchen u. aufsteigend nach titel sortieren
+        // alle Buecher asynchron suchen u. aufsteigend nach name sortieren
         // https://docs.mongodb.org/manual/reference/object-id
-        // entries(): { titel: 'a', rating: 5 } => [{ titel: 'x'}, {rating: 5}]
+        // entries(): { name: 'a', rating: 5 } => [{ name: 'x'}, {rating: 5}]
         if (filter === undefined || Object.entries(filter).length === 0) {
             return this.#findAll();
         }

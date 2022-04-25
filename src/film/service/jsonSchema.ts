@@ -1,19 +1,19 @@
 import { type GenericJsonSchema } from './GenericJsonSchema.js';
 
-export const MAX_BEWERTUNG = 10;
+export const MAX_BEWERTUNG = 5;
 
 export const jsonSchema: GenericJsonSchema = {
     $schema: 'https://json-schema.org/draft/2020-12/schema',
     $id: 'https://acme.com/film.json#',
-    name: 'Film',
+    title: 'Film',
     description: 'Eigenschaften eines Filmes: Typen und Constraints',
     type: 'object',
     properties: {
-        /* eslint-enable @typescript-eslint/naming-convention */
+        /* eslint-disable @typescript-eslint/naming-convention */
         _id: { type: 'object' },
         __v: {
-             type: 'number',
-              minimum: 0,
+            type: 'number',
+            minimum: 0,
         },
         /* eslint-enable @typescript-eslint/naming-convention */
         version: {
@@ -28,16 +28,17 @@ export const jsonSchema: GenericJsonSchema = {
             type: 'string',
             pattern: '^\\w.*',
         },
-        bewertung: {
-            type: 'number',
-            minimum: 0,
-            maximum: MAX_BEWERTUNG,
+        isan: {
+            type: 'string',
         },
         preis: {
             type: 'number',
             minimum: 0,
         },
-        isan: { type: 'string', format: 'ISAN' },
+        bewertung: {
+            type: 'number',
+            minimum: 0,
+            maximum: MAX_BEWERTUNG,
         },
     },
     // isan ist NUR beim Neuanlegen ein Pflichtfeld
@@ -46,9 +47,10 @@ export const jsonSchema: GenericJsonSchema = {
     errorMessage: {
         properties: {
             version: 'Die Versionsnummer muss mindestens 0 sein.',
-            name: 'Ein Filmname muss mit einem Buchstaben, einer Ziffer oder _ beginnen.',
+            name: 'Ein Filmname  muss mit einem Buchstaben, einer Ziffer oder _ beginnen.',
+            // eslint-disable-next-line prettier/prettier
             produzent: 'Ein Produzent muss mit einem Buchstaben, einer Ziffer oder _ beginnen.',
-            bewertung: 'Eine Bewertung muss zwischen 0 und 10 liegen.',
+            bewertung: 'Eine Bewertung muss zwischen 0 und 5 liegen.',
             preis: 'Der Preis darf nicht negativ sein.',
             isan: 'Die ISAN-Nummer ist nicht korrekt.',
         },

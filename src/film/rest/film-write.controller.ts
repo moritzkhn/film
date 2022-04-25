@@ -200,7 +200,7 @@ export class FilmWriteController {
             case 'NameExists':
                 return this.#handleNameExists(err.name, res);
 
-            case 'IsbnExists':
+            case 'IsanExists':
                 return this.#handleIsanExists(err.isan, res);
 
             default:
@@ -274,4 +274,3 @@ export class FilmWriteController {
         }
     }
 }
-/* eslint-enable max-lines */

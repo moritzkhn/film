@@ -14,115 +14,78 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <https://www.gnu.org/licenses/>.
  */
-import { type Buch } from '../../buch/entity/index.js';
+import { type Film } from '../../film/entity/index.js';
 import { ObjectID } from 'bson';
 
 // eslint-disable-next-line @typescript-eslint/naming-convention
-type BuchIdVersion = Buch & { _id: ObjectID; __v: number };
+type FilmIdVersion = Film & { _id: ObjectID; __v: number };
 
 /* eslint-disable @typescript-eslint/naming-convention */
-export const testdaten: BuchIdVersion[] = [
+export const testdaten: FilmIdVersion[] = [
     // -------------------------------------------------------------------------
     // L e s e n
     // -------------------------------------------------------------------------
     {
         _id: new ObjectID('000000000000000000000001'),
-        titel: 'Alpha',
-        rating: 4,
-        art: 'DRUCKAUSGABE',
-        verlag: 'FOO_VERLAG',
-        preis: 11.1,
-        rabatt: 0.011,
-        lieferbar: true,
-        // https://docs.mongodb.com/manual/reference/method/Date
-        datum: new Date('2022-02-01'),
-        isbn: '9783897225831',
-        homepage: 'https://acme.at/',
-        schlagwoerter: ['JAVASCRIPT'],
+        name: 'Star Wars Teil 1',
+        produzent: 'Lucas Arts',
+        isan: '000000000000000000000001',
+        preis: 19.99,
+        bewertung: 4,
         __v: 0,
     },
     {
         _id: new ObjectID('000000000000000000000002'),
-        titel: 'Beta',
-        rating: 2,
-        art: 'KINDLE',
-        verlag: 'BAR_VERLAG',
-        preis: 22.2,
-        rabatt: 0.022,
-        lieferbar: true,
-        datum: new Date('2022-02-02'),
-        isbn: '9783827315526',
-        homepage: 'https://acme.biz/',
-        schlagwoerter: ['TYPESCRIPT'],
+        name: 'Harry Potter Teil 2',
+        produzent: 'Warner Brothers',
+        isan: '000000000000000000000002',
+        preis: 19.99,
+        bewertung: 3,
         __v: 0,
     },
     {
         _id: new ObjectID('000000000000000000000003'),
-        titel: 'Gamma',
-        rating: 1,
-        art: 'DRUCKAUSGABE',
-        verlag: 'FOO_VERLAG',
-        preis: 33.3,
-        rabatt: 0.033,
-        lieferbar: true,
-        datum: new Date('2022-02-03'),
-        isbn: '9780201633610',
-        homepage: 'https://acme.com/',
-        schlagwoerter: ['JAVASCRIPT', 'TYPESCRIPT'],
+        name: 'Harry Potter Teil 3',
+        produzent: 'Warner Brothers',
+        isan: '000000000000000000000003',
+        preis: 25.99,
+        bewertung: 5,
         __v: 0,
     },
     // -------------------------------------------------------------------------
     // A e n d e r n
     // -------------------------------------------------------------------------
     {
-        _id: new ObjectID('000000000000000000000040'),
-        titel: 'Delta',
-        rating: 3,
-        art: 'DRUCKAUSGABE',
-        verlag: 'BAR_VERLAG',
-        preis: 44.4,
-        rabatt: 0.044,
-        lieferbar: true,
-        datum: new Date('2022-02-04'),
-        isbn: '978038753406',
-        homepage: 'https://acme.de/',
-        schlagwoerter: [],
+        _id: new ObjectID('000000000000000000000004'),
+        name: 'Harry Potter Teil 4',
+        produzent: 'Netflix',
+        isan: '000000000000000000000004',
+        preis: 17.99,
+        bewertung: 4,
         __v: 0,
     },
     // -------------------------------------------------------------------------
     // L o e s c h e n
     // -------------------------------------------------------------------------
     {
-        _id: new ObjectID('000000000000000000000050'),
-        titel: 'Epsilon',
-        rating: 2,
-        art: 'KINDLE',
-        verlag: 'FOO_VERLAG',
-        preis: 55.5,
-        rabatt: 0.055,
-        lieferbar: true,
-        datum: new Date('2022-02-05'),
-        isbn: '9783824404810',
-        homepage: 'https://acme.es/',
-        schlagwoerter: ['TYPESCRIPT'],
+        _id: new ObjectID('000000000000000000000005'),
+        name: 'Harry Potter Teil 5',
+        produzent: 'Lucas Arts',
+        isan: '000000000000000000000005',
+        preis: 43.66,
+        bewertung: 2,
         __v: 0,
     },
     // -------------------------------------------------------------------------
     // z u r   f r e i e n   V e r f u e g u n g
     // -------------------------------------------------------------------------
     {
-        _id: new ObjectID('000000000000000000000060'),
-        titel: 'Phi',
-        rating: 2,
-        art: 'KINDLE',
-        verlag: 'FOO_VERLAG',
-        preis: 66.6,
-        rabatt: 0.066,
-        lieferbar: true,
-        datum: new Date('2022-02-06'),
-        isbn: '9783540430810',
-        homepage: 'https://acme.it/',
-        schlagwoerter: ['TYPESCRIPT'],
+        _id: new ObjectID('000000000000000000000006'),
+        name: 'Harry Potter Teil 6',
+        produzent: 'Lucas Arts',
+        isan: '000000000000000000000006',
+        preis: 10.99,
+        bewertung: 4,
         __v: 0,
     },
 ];

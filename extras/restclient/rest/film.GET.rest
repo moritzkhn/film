@@ -17,17 +17,32 @@
 // N e t z w e r k   -  V e r b i n d u n g   n o t w e n d i g
 //
 
-### Login
-// @name login
-POST {{authUrl}}/login
-Content-Type: application/x-www-form-urlencoded
+### Suche alle Filme
+GET {{restUrl}}
 
-username=admin&password=p
+### Suche mit vorhandener Film-ID/ISAN
+GET {{restUrl}}/000000000000000000000001
 
-### Loeschen eines vorhandenen Buches
-DELETE {{restUrl}}/000000000000000000000050
-Authorization: Bearer {{login.response.body.$.token}}
+### Suche mit vorhandener Film-ID/ISAN und Versionsnummer
+GET {{restUrl}}/000000000000000000000001
+If-None-Match: "0"
 
-### Loeschen eines nicht-vorhandenen Buches
-DELETE {{restUrl}}/999999999999999999999999
-Authorization: Bearer {{login.response.body.$.token}}
+### Suche mit vorhandener Film-ID/ISAN und falscher Versionsnummer
+GET {{restUrl}}/000000000000000000000001
+If-None-Match: "-1"
+
+### Suche mit nicht-vorhandener Film-ID/ISAN
+GET {{restUrl}}/999999999999999999999999
+
+### Suche mit vorhandenem Namen
+GET {{restUrl}}?name=Star Wars Teil 1
+
+### Suche mit nicht-vorhandenem Namen
+GET {{restUrl}}?name=xxx
+
+### Suche mit Produzent
+GET {{restUrl}}?produzent=Lucas Arts
+
+### Suche mit Preis
+GET {{restUrl}}?preis=19.99
+

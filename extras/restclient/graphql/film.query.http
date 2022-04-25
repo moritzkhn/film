@@ -25,11 +25,11 @@ Content-Type: application/json
 X-REQUEST-TYPE: GraphQL
 
 {
-  buecher {
+  film {
     id
-    titel
-    art
-    version
+    name
+    produzent
+    preis
   }
 }
 
@@ -39,11 +39,11 @@ Content-Type: application/json
 X-REQUEST-TYPE: GraphQL
 
 query ($id: ID! = "000000000000000000000001") {
-  buch(id: $id) {
-    titel
-    art
-    isbn
-    version
+  film(id: $id) {
+    name
+    produzent
+    preis
+    bewertung
   }
 }
 

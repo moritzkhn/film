@@ -3,7 +3,6 @@
  * @packageDocumentation
  */
 
-import { type Film, type FilmDocument, modelName } from '../entity/index.js';
 import {
     type CreateError,
     type FilmNotExists,
@@ -12,6 +11,7 @@ import {
     type VersionInvalid,
     type VersionOutdated,
 } from './errors';
+import { type Film, type FilmDocument, modelName } from '../entity/index.js';
 import { FilmValidationService } from './film-validation.service.js';
 import { InjectModel } from '@nestjs/mongoose';
 import { Injectable } from '@nestjs/common';
@@ -132,7 +132,7 @@ export class FilmWriteService {
     /**
      * Ein Film wird asynchron anhand seiner ID gelöscht.
      *
-     * @param id ID des zu löschenden Filmes
+     * @param idStr ID des zu löschenden Film
      * @returns true, falls das Film vorhanden war und gelöscht wurde. Sonst false.
      */
     async delete(idStr: string) {
@@ -163,16 +163,16 @@ export class FilmWriteService {
 
         // statt 2 sequentiellen DB-Zugriffen waere 1 DB-Zugriff mit OR besser
 
-        const { name: name } = film;
+        const { name } = film;
         // eslint-disable-next-line security/detect-non-literal-fs-filename, prettier/prettier
-        if (await this.#filmModel.exists({ name: name })) { //NOSONAR
-            return { type: 'NameExists', name: name };
+        if (await this.#filmModel.exists({ name })) { //NOSONAR
+            return { type: 'NameExists', name };
         }
 
-        const { isan: isan } = film;
+        const { isan } = film;
         // eslint-disable-next-line security/detect-non-literal-fs-filename, prettier/prettier
-        if (await this.#filmModel.exists({ isan: isan })) { //NOSONAR
-            return { type: 'IsbnExists', isan: isan };
+        if (await this.#filmModel.exists({ isan })) { //NOSONAR
+            return { type: 'IsanExists', isan };
         }
 
         this.#logger.debug('#validateCreate: ok');
