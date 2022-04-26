@@ -29,7 +29,7 @@ If-None-Match: "0"
 
 ### Suche mit vorhandener Film-ID/ISAN und falscher Versionsnummer
 GET {{restUrl}}/000000000000000000000001
-If-None-Match: "-1"
+If-None-Match: -1
 
 ### Suche mit nicht-vorhandener Film-ID/ISAN
 GET {{restUrl}}/999999999999999999999999

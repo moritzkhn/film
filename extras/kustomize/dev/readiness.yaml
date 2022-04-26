@@ -17,12 +17,12 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: buch
+  name: film
 spec:
   template:
     spec:
       containers:
-        - name: buch
+        - name: film
           readinessProbe:
             # Anzahl Sekunden, bis die Probe fuer Liveness abgesetzt wird
             initialDelaySeconds: 10
