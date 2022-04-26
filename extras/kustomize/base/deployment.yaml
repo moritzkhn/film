@@ -18,34 +18,34 @@ apiVersion: apps/v1
 # https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.19/#deployment-v1-apps
 kind: Deployment
 metadata:
-  name: buch
+  name: film
   labels:
-    app: buch
+    app: film
 spec:
   # https://kubernetes.io/docs/concepts/workloads/controllers/deployment/#selector
   selector:
     matchLabels:
-      app: buch
+      app: film
   # Anzahl laufender Pods fuer das template
   replicas: 1
   # https://kubernetes.io/docs/concepts/workloads/pods/#pod-templates
   template:
     metadata:
       labels:
-        app: buch
+        app: film
     # Spezifikation des Pod
     spec:
-      serviceAccountName: acme-buch
+      serviceAccountName: acme-film
       containers:
         # https://kubernetes.io/docs/concepts/containers/images
-        - image: docker.io/juergenzimmermann/buch:1.0.0
-          name: buch
+        - image: docker.io/moritz/film:1.0.0
+          name: film
           # https://kubernetes.io/docs/tasks/inject-data-application/define-interdependent-environment-variables
           # https://opensource.com/article/19/6/introduction-kubernetes-secrets-and-configmaps
           envFrom:
             # https://kubernetes.io/docs/concepts/configuration/configmap
             - configMapRef:
-                name: buch-env
+                name: film-env
           env:
             - name: DB_PASS
               valueFrom:
@@ -81,10 +81,10 @@ spec:
               port: http
           volumeMounts:
             - mountPath: /var/log/node
-              name: log-buch
+              name: log-film
       volumes:
-        - name: log-buch
+        - name: log-film
           # https://kubernetes.io/docs/concepts/storage/volumes/#hostpath
           hostPath:
-            path: /run/desktop/mnt/host/c/Zimmermann/volumes/buch
+            path: /run/desktop/mnt/host/c/Zimmermann/volumes/film
             type: Directory
